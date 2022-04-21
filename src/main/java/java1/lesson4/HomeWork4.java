@@ -46,7 +46,7 @@ public class HomeWork4 {
             return true;
         }
 
-        if (checkWin(dot)) {
+        if (checkDiagonal(dot) && checkLanes(dot)) {
             if (dot == DOT_HUMAN) {
                 System.out.println("HUMAN wins!!!");
                 scoreHuman++;
@@ -74,13 +74,28 @@ public class HomeWork4 {
      * ** Сделать проверку победы на поле 5х5 и длина последовательности 4
      * *** Сделть проверку на любой произвольный размер поля и произвольную длину последовательности
      */
-    private static boolean checkWin(char dot) {
-        boolean left1, left2, left3, left4;
-        for (int y = 0; y < fieldSizeY; y++) {
-            for (int x = 0; x < fieldSizeX; x++) {
-                left1 == (field[y = y - 1][x = x + 1] == dot);
-            }
+    private static boolean checkDiagonal(char dot) {
+        boolean right, left;
+        right = true;
+        left = true;
+        for (int i = 0; i < 3; i++) {
+            right &= (field[i][i] == dot);
+            left &= (field[3-i-1][i] == dot);
+        }
+        if (right || left) return true;
 
+        return false;
+    }
+    private static boolean checkLanes(char dot) {
+        boolean left, right;
+        for (int y = 0; y < fieldSizeY; y++) {
+            left = true;
+            right = true;
+            for (int x=0; x < 3; x++) {
+                left &= (field[y][x] == dot);
+                right &= (field[x][y] == dot);
+            }
+            if (left || right) return true;
         }
 
         return false;
