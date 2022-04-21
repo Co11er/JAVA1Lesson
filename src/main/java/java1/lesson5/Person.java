@@ -20,7 +20,7 @@ public class Person {
     }
 
     public void printPerson() {
-        System.out.printf("Person %s, lastName - %s, firstName - %s, patronymic - %s, email - %s, phone - %d, salary - %d, age - %d,\n", lastName, firstName, patronymic, email, phone, salary, age);
+        System.out.printf("Person %s, lastName - %s, firstName - %s, patronymic - %s, email - %s, phone - %d, salary - %d, age - %d \n", lastName, firstName, patronymic, email, phone, salary, age);
     }
 
     public int getAge() {
